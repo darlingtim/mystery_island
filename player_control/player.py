@@ -1,6 +1,6 @@
-class player:
-    def __init__(self, name):
-        self.name = name
+class Player:
+    def __init__(self):
+        self.name = ""
         self.energy = 5
         self.current_location = "beach"
         self.inventory = []
