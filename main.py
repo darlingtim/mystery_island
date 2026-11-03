@@ -1,10 +1,10 @@
-from player_control import player
+from player_control.player import Player
 from validation.playername import playerNameValidation
-from game_control.game import start_game, quit_game
+from game_control.game import Game
 
 
 print("Create a Username")
-new_player = player
+new_player = Player()
 while True:
     name = input("Enter your preferred username here: ").strip()
     nameValidationMessage = playerNameValidation(name)
@@ -27,11 +27,12 @@ instruction = f"Hello {new_player.name}!, \nWelcome to Mystery Island after the 
 print(f"***INSTRUCTION:***\n{" "*5}{instruction}")
 
 players_choice = input("Decide your Choice:  ").strip()
+game = Game()
 
 if players_choice == "1":
-    started =start_game()
+    started =game.start_game(new_player)
     print(started)
 
 if players_choice == "2":
-    print(quit_game())
+    print(game.quit_game(new_player))
     
