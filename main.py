@@ -28,11 +28,12 @@ print(f"***INSTRUCTION:***\n{" "*5}{instruction}")
 
 players_choice = input("Decide your Choice:  ").strip()
 game = Game()
+game.player = new_player
 
 if players_choice == "1":
-    started =game.start_game(new_player)
+    started = game.start_game()
     print(started)
 
 if players_choice == "2":
-    print(game.quit_game(new_player))
+    print(game.quit_game())
     

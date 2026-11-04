@@ -1,8 +1,8 @@
-
+from player_control.player import Player
 class Game:
     def __init__(self):
         self.is_running = False
-        self.player = None
+        self.player = Player()
         self.won = False
         self.lose = False
 
@@ -19,21 +19,20 @@ class Game:
             self.lose = False
 
 
-    def quit_game(self, player):
+    def quit_game(self):
         self.is_running = False
-        return f"GoodBye {player.name}!, You can always come back to explore Mystery Island."
+        return f"GoodBye {self.player.name}!, You can always come back to explore Mystery Island."
 
-    def start_game(self, player):
+    def start_game(self):
         if self.won == False and self.lose == False and self.is_running == False:
             self.is_running = True
-            self.player = player
-            print(f"Lets Play {player.name}!, You have {player.energy} energy to explore the island.")
+            print(f"Lets Play {self.player.name}!, You have {self.player.energy} energy to explore the island.")
             
         else:
             return "Game is already running."
         
 
-    def replay_game(self, player):
+    def replay_game(self):
         if (self.won == True or self.lose == True) and self.is_running == False:
             if self.won == True:
                 self.__wonSetter()
@@ -41,9 +40,8 @@ class Game:
                 self.__loseSetter()
 
         
-            player.energy += 5
-            self.player = player
-            self.start_game(player)
+            self.player.energy += 5
+            self.start_game()
 
         else:
             return "Game is already running."
