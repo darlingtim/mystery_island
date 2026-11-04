@@ -1,10 +1,19 @@
 from player_control.player import Player
 class Game:
-    def __init__(self):
+    def __init__(self, playerName):
         self.is_running = False
-        self.player = Player()
+        self.__player = Player(playerName)
         self.won = False
         self.lose = False
+
+    @property
+    def player_name(self):
+        return self.__player.name
+
+    @property
+    def player_energy(self):
+        return self.__player.energy
+
 
     def __wonSetter(self):
         if self.won == False:
@@ -21,12 +30,12 @@ class Game:
 
     def quit_game(self):
         self.is_running = False
-        return f"GoodBye {self.player.name}!, You can always come back to explore Mystery Island."
+        return f"GoodBye {self.player_name}!, You can always come back to explore Mystery Island."
 
     def start_game(self):
         if self.won == False and self.lose == False and self.is_running == False:
             self.is_running = True
-            print(f"Lets Play {self.player.name}!, You have {self.player.energy} energy to explore the island.")
+            print(f"Lets Play {self.player_name}!, You have {self.player_energy} energies to explore the island.")
             
         else:
             return "Game is already running."
